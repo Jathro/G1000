@@ -23,20 +23,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR pCmdLine,
 
     // Create the window.
 
-    HWND hwnd = CreateWindowEx(
-        0,                           // Optional window styles.
-        CLASS_NAME,                  // Window class
-        L"Nano", // Window text
-        WS_OVERLAPPEDWINDOW,         // Window style
-
-        // Size and position
+    HWND hwnd = CreateWindowEx(0, CLASS_NAME, L"G1000", WS_OVERLAPPEDWINDOW,
         CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT,
-
-        NULL,      // Parent window
-        NULL,      // Menu
-        hInstance, // Instance handle
-        NULL       // Additional application data
-    );
+        NULL, NULL, hInstance, NULL);
 
     AddControls(hwnd);
 
@@ -90,28 +79,45 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 
 void AddControls(HWND hWnd)
 {
-    CreateWindowW(L"Button", L"VOL", WS_VISIBLE | WS_CHILD, 42, 25, 30, 30, hWnd, NULL, NULL, NULL);
-    CreateWindowW(L"Button", L"NAV", WS_VISIBLE | WS_CHILD, 42, 80, 30, 30, hWnd, NULL, NULL, NULL);
-    CreateWindowW(L"Button", L"HDG", WS_VISIBLE | WS_CHILD, 42, 135, 30, 30, hWnd, NULL, NULL, NULL);
-    CreateWindowW(L"Button", L"ALT", WS_VISIBLE | WS_CHILD, 42, 360, 30, 30, hWnd, NULL, NULL, NULL);
+    const int SMALL_BUTTON_WIDTH = 35;
+    const int DIAL_SIZE = 30;
 
-    CreateWindowW(L"Button", L"AP", WS_VISIBLE | WS_CHILD, 20, 175, 35, 20, hWnd, NULL, NULL, NULL);
-    CreateWindowW(L"Button", L"FD", WS_VISIBLE | WS_CHILD, 60, 175, 35, 20, hWnd, NULL, NULL, NULL);
+    CreateWindowW(L"Button", L"VOL", WS_VISIBLE | WS_CHILD, 42, 25, DIAL_SIZE, DIAL_SIZE, hWnd, NULL, NULL, NULL);
+    CreateWindowW(L"Button", L"NAV", WS_VISIBLE | WS_CHILD, 42, 80, DIAL_SIZE, DIAL_SIZE, hWnd, NULL, NULL, NULL);
+    CreateWindowW(L"Button", L"HDG", WS_VISIBLE | WS_CHILD, 42, 135, DIAL_SIZE, DIAL_SIZE, hWnd, NULL, NULL, NULL);
+    CreateWindowW(L"Button", L"ALT", WS_VISIBLE | WS_CHILD, 42, 360, DIAL_SIZE, DIAL_SIZE, hWnd, NULL, NULL, NULL);
 
-    CreateWindowW(L"Button", L"HDG", WS_VISIBLE | WS_CHILD, 20, 205, 35, 20, hWnd, NULL, NULL, NULL);
-    CreateWindowW(L"Button", L"ALT", WS_VISIBLE | WS_CHILD, 60, 205, 35, 20, hWnd, NULL, NULL, NULL);
+    CreateWindowW(L"Button", L"AP", WS_VISIBLE | WS_CHILD, 20, 175, SMALL_BUTTON_WIDTH, 20, hWnd, NULL, NULL, NULL);
+    CreateWindowW(L"Button", L"FD", WS_VISIBLE | WS_CHILD, 60, 175, SMALL_BUTTON_WIDTH, 20, hWnd, NULL, NULL, NULL);
 
-    CreateWindowW(L"Button", L"NAV", WS_VISIBLE | WS_CHILD, 20, 235, 35, 20, hWnd, NULL, NULL, NULL);
-    CreateWindowW(L"Button", L"VNV", WS_VISIBLE | WS_CHILD, 60, 235, 35, 20, hWnd, NULL, NULL, NULL);
+    CreateWindowW(L"Button", L"HDG", WS_VISIBLE | WS_CHILD, 20, 205, SMALL_BUTTON_WIDTH, 20, hWnd, NULL, NULL, NULL);
+    CreateWindowW(L"Button", L"ALT", WS_VISIBLE | WS_CHILD, 60, 205, SMALL_BUTTON_WIDTH, 20, hWnd, NULL, NULL, NULL);
 
-    CreateWindowW(L"Button", L"APR", WS_VISIBLE | WS_CHILD, 20, 265, 35, 20, hWnd, NULL, NULL, NULL);
-    CreateWindowW(L"Button", L"BC", WS_VISIBLE | WS_CHILD, 60, 265, 35, 20, hWnd, NULL, NULL, NULL);
+    CreateWindowW(L"Button", L"NAV", WS_VISIBLE | WS_CHILD, 20, 235, SMALL_BUTTON_WIDTH, 20, hWnd, NULL, NULL, NULL);
+    CreateWindowW(L"Button", L"VNV", WS_VISIBLE | WS_CHILD, 60, 235, SMALL_BUTTON_WIDTH, 20, hWnd, NULL, NULL, NULL);
 
-    CreateWindowW(L"Button", L"VS", WS_VISIBLE | WS_CHILD, 20, 295, 35, 20, hWnd, NULL, NULL, NULL);
-    CreateWindowW(L"Button", L"NUP", WS_VISIBLE | WS_CHILD, 60, 295, 35, 20, hWnd, NULL, NULL, NULL);
+    CreateWindowW(L"Button", L"APR", WS_VISIBLE | WS_CHILD, 20, 265, SMALL_BUTTON_WIDTH, 20, hWnd, NULL, NULL, NULL);
+    CreateWindowW(L"Button", L"BC", WS_VISIBLE | WS_CHILD, 60, 265, SMALL_BUTTON_WIDTH, 20, hWnd, NULL, NULL, NULL);
 
-    CreateWindowW(L"Button", L"FLC", WS_VISIBLE | WS_CHILD, 20, 325, 35, 20, hWnd, NULL, NULL, NULL);
-    CreateWindowW(L"Button", L"NDN", WS_VISIBLE | WS_CHILD, 60, 325, 35, 20, hWnd, NULL, NULL, NULL);
+    CreateWindowW(L"Button", L"VS", WS_VISIBLE | WS_CHILD, 20, 295, SMALL_BUTTON_WIDTH, 20, hWnd, NULL, NULL, NULL);
+    CreateWindowW(L"Button", L"NUP", WS_VISIBLE | WS_CHILD, 60, 295, SMALL_BUTTON_WIDTH, 20, hWnd, NULL, NULL, NULL);
+
+    CreateWindowW(L"Button", L"FLC", WS_VISIBLE | WS_CHILD, 20, 325, SMALL_BUTTON_WIDTH, 20, hWnd, NULL, NULL, NULL);
+    CreateWindowW(L"Button", L"NDN", WS_VISIBLE | WS_CHILD, 60, 325, SMALL_BUTTON_WIDTH, 20, hWnd, NULL, NULL, NULL);
+
+    CreateWindowW(L"Button", L"COM", WS_VISIBLE | WS_CHILD, 640, 25, DIAL_SIZE, DIAL_SIZE, hWnd, NULL, NULL, NULL);
+    CreateWindowW(L"Button", L"CRS", WS_VISIBLE | WS_CHILD, 640, 80, DIAL_SIZE, DIAL_SIZE, hWnd, NULL, NULL, NULL);
+    CreateWindowW(L"Button", L"RNG", WS_VISIBLE | WS_CHILD, 640, 135, DIAL_SIZE, DIAL_SIZE, hWnd, NULL, NULL, NULL);
+    CreateWindowW(L"Button", L"FMS", WS_VISIBLE | WS_CHILD, 640, 360, DIAL_SIZE, DIAL_SIZE, hWnd, NULL, NULL, NULL);
+
+    CreateWindowW(L"Button", L"ENT", WS_VISIBLE | WS_CHILD, 620, 265, SMALL_BUTTON_WIDTH, 20, hWnd, NULL, NULL, NULL);
+    CreateWindowW(L"Button", L"MENU", WS_VISIBLE | WS_CHILD, 660, 265, SMALL_BUTTON_WIDTH, 20, hWnd, NULL, NULL, NULL);
+
+    CreateWindowW(L"Button", L"PPL", WS_VISIBLE | WS_CHILD, 620, 295, SMALL_BUTTON_WIDTH, 20, hWnd, NULL, NULL, NULL);
+    CreateWindowW(L"Button", L"PROG", WS_VISIBLE | WS_CHILD, 660, 295, SMALL_BUTTON_WIDTH, 20, hWnd, NULL, NULL, NULL);
+
+    CreateWindowW(L"Button", L"CLR", WS_VISIBLE | WS_CHILD, 620, 325, SMALL_BUTTON_WIDTH, 20, hWnd, NULL, NULL, NULL);
+    CreateWindowW(L"Button", L"EXT", WS_VISIBLE | WS_CHILD, 660, 325, SMALL_BUTTON_WIDTH, 20, hWnd, NULL, NULL, NULL);
 
     int j = 12;
     for (int i = 0; i < j; i++)
